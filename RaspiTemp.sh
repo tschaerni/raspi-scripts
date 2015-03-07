@@ -28,16 +28,12 @@ settemp(){
 cputemp(){
 	if [ "$cpuTempInt" -le "$cold" ] ; then
 		echo -e "CPU Temp: \e[34m$cpuTempFloat\e[0m°C"
+	elif [ "$cpuTempInt" -le "$warm" ] ; then
+		echo -e "CPU Temp: \e[32m$cpuTempFloat\e[0m°C"
+	elif [ "$cpuTempInt" -le "$hot" ] ; then
+		echo -e "CPU Temp: \e[33m$cpuTempFloat\e[0m°C"
 	else
-		if [ "$cpuTempInt" -le "$warm" ] ; then
-			echo -e "CPU Temp: \e[32m$cpuTempFloat\e[0m°C"
-		else
-			if [ "$cpuTempInt" -le "$hot" ] ; then
-				echo -e "CPU Temp: \e[33m$cpuTempFloat\e[0m°C"
-			else
-				echo -e "CPU Temp: \e[31m$cpuTempFloat\e[0m°C"
-			fi
-		fi
+		echo -e "CPU Temp: \e[31m$cpuTempFloat\e[0m°C"
 	fi
 }
 
@@ -45,16 +41,12 @@ cputemp(){
 gputemp(){
 	if [ "$gpuTempInt" -le "$cold" ] ; then
 		echo -e "GPU Temp: \e[34m$gpuTempFloat\e[0m°C"
+	elif [ "$gpuTempInt" -le "$warm" ] ; then
+		echo -e "GPU Temp: \e[32m$gpuTempFloat\e[0m°C"
+	elif [ "$gpuTempInt" -le "$hot" ] ; then
+		echo -e "GPU Temp: \e[33m$gpuTempFloat\e[0m°C"
 	else
-		if [ "$gpuTempInt" -le "$warm" ] ; then
-			echo -e "GPU Temp: \e[32m$gpuTempFloat\e[0m°C"
-		else
-			if [ "$gpuTempInt" -le "$hot" ] ; then
-				echo -e "GPU Temp: \e[33m$gpuTempFloat\e[0m°C"
-			else
-				echo -e "GPU Temp: \e[31m$gpuTempFloat\e[0m°C"
-			fi
-		fi
+		echo -e "GPU Temp: \e[31m$gpuTempFloat\e[0m°C"
 	fi
 }
 
