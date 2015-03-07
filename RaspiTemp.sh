@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# Changes:
+#	08.03.2015 - tested with Raspberry Pi 2 Model B
+#
 # Simple Bash script for monitoring the Temperature of a Raspberry Pi.
 # Notice that the "calculations" for the colors is only Integer.
 # ≤40°C is cold, 41-50°C is warm, 51-70°C is hot and all greater than 70°C is "melting".
 # The values can be changed here:
+#
 cold=40
 warm=50
 hot=70
