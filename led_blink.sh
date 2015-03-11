@@ -19,7 +19,7 @@
 #		LICENCE:		GPLv3
 #
 #===============================================================================
-# Script only for the Revision 2!
+# Script only for the Revision 2! Not tested with Pi 2, Pi B+/A+
 # Used Ports are:
 # 0=GPIO 17|Phys 11
 # 2=GPIO 27|Phys 13

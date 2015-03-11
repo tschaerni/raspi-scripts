@@ -12,6 +12,17 @@ cold=40
 warm=50
 hot=70
 
+if ! /opt/vc/bin/vcgencmd measure_temp > /dev/null 2>&1
+then
+	echo -e \
+"There are some issues with the installed firmware or software.
+Try a update of your OS (i.e debian: apt-get update && apt-get upgrade -y)
+and your firmware (i.e with rpi-update from Hexxeh: https://github.com/Hexxeh/rpi-update)
+and make a restart."
+exit 1
+fi
+
+
 settemp(){
 	cpuTemp0=$(cat /sys/class/thermal/thermal_zone0/temp)
 	cpuTemp1=$(($cpuTemp0/1000))
@@ -51,7 +62,7 @@ gputemp(){
 }
 
 case $1 in
-	-w|--repeat)
+	-f|--follow)
 		echo -e "Interrupt with CTRL+C\n"
 		echo "-----------------"
 		while true ; do
@@ -61,6 +72,14 @@ case $1 in
 			echo "-----------------"
 			sleep 3
 		done
+	;;
+
+	--hint)
+		echo -e "\n"
+		echo "Interesting fact:"
+		echo -e "\tRun raspitemp with the parameter -f and press your thumb on the CPU."
+		echo -e "\tAs you will see, the CPU transfers some thermal energy to your thumb and cools down."
+		echo -e "\n"
 	;;
 
 	*)
